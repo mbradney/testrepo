@@ -1,0 +1,1128 @@
+---------------------------------------------------------------------------------------------------------
+### Types ###
+1. Data types in Python:
+	int - ex: an integer like 11
+	float - ex: a real number like 21.213
+	str - ex: a string of text like "Hello Python 101"
+
+2. Type command
+	a. To see the data type for a specific type of data, the syntax is : type ([data])
+ex: 	type(11) returns: int
+ex: 	type(21.213) returns: float
+ex: 	type ("Hello Python 101") returns: str
+
+3. Type-casting
+	a. Defn: changing the type for a given data point
+ex: 	float(2) returns: 2.0
+ex: 	int(1.1) returns: 1
+ex: 	int(3.99) returns: 3 > Python will always truncate towards zero, not round
+ex: 	int('1') returns: 1
+ex: 	int('A') returns an error
+
+4. Boolean Type (bool)
+	Options include:
+		True
+		False (note upper case first letter)
+ex: 	type(True) returns: bool
+
+5. Casting a boolean to an integer
+ex: 	int(True) returns: 1
+ex: 	int(False) resutns: 0
+
+---------------------------------------------------------------------------------------------------------
+### Expressions & Variables ###
+1. Expression Defn: mathematical operations performed by Python
+
+2. Python 3 returns division values as a float data type
+ex: 	25/5 = 5.0
+ex: 	25/6 = 4.166...
+ex: 	25//6 = 4 ---> use of "//" leads to integer division
+
+3. Python follows normal mathematical conventions when performing operations
+ex: 	2*60+30=150
+	and 30+2*60=150 ---> without parentheses multiplication is performed first
+ex: 	(30+2)*60=1920
+ 
+---------------------------------------------------------------------------------------------------------
+### Notes from lab exercise ###
+1. In order to use a library or system, it must be imported first using the import functions
+ex: 	import sys
+	NOTE: sys is a built-in module that contains many system-specific parameters and functions
+
+2. Python is an "interpreted language" (as opposed to a "compiled language")
+	a. This means that Python interprets a script line-by-line as it is executed as opposed to at a compile time 
+
+3. Strings can be represented by either single or double quotes
+ex: 	'String' is equivalent to "String"
+
+---------------------------------------------------------------------------------------------------------
+### String Operations ###
+
+1. Strings can be thought of as an ordered sequence - each element in the sequence can then be accessed via indexing
+	a. Indexing is indicated using square brackets
+	b. Positive ndexing starts at 0 
+ex: 	Name = Mike
+ex: 	Name[3] = e
+ex: 	Name[-3] = i ---> negative indexing starts by assigning the last element in the sequence a value of -1 
+
+2. Slicing and Stride
+	a. Slicing
+ex: 	Name = Michael Bradney
+ex: 	Name[3:8] = hael B
+
+	b. Stride
+ex: 	Name = Michael Bradney
+ex: 	Name[::2] = McalBany
+		 ^ the "::" is the stride, and the "2" indicates that we want to pick off every second variable, starting at 0 (Name[0] = M)
+	
+	c. Slicing + Stride
+ex: 	Name = Michael Bradney
+ex: 	Name[0:5:2] = Mca 
+		^ returns every second value up to index 5
+
+3. Len command
+	a. len() returns the length of a string
+ex: 	len("Mike") = 4
+
+4. Concatenation
+	a. We can add to strings using the addition symbol
+ex: 	Name = Mike
+	Full Name = Name + "Bradney"
+	Full Name = Mike Bradney
+
+5. Tuples
+	a. Replicating a string
+ex: 	Name = Mike
+	Name * 3 = Mike Mike Mike
+
+6. Escape Sequences
+	a. Defn: Escape sequences represent strings that are difficult to input
+	
+	b. \n returns the string to a new line
+ex: 	print("Mike Bradney \n is the best") returns:
+		Mike Bradney
+		is the best
+	
+	c. \t represents a tab
+	ex: print("Mike Bradney \t is the best") returns:
+		Mike Bradney 	is the best
+	
+	d. To place a \ in a string, use \\ OR place an "r" in front of the string
+ex1: 	print("Mike Bradney \\ is the best") returns:
+		Mike Bradney \ is the best
+ex2: 	print(r"Mike Bradney \ is the best")
+	
+7. String Methods
+	a. Upper
+ex: 	stringA = "ellie is cute"
+	stringB = stringA.upper() 
+	stringB = ELLIE IS CUTE
+	
+	b. Replace
+ex: 	stringA = "Ellie is cute"
+	stringB = stringA.replace('Ellie', 'Carl')
+	stringB = Carl is cute
+
+	c. Find
+ex: 	Name = Michael Bradney
+	Name.find('el') = 5 ---> returns the starting index of the sub-string to be found
+	NOTE: If a sub-string is NOT in the string, the output is: -1
+	
+---------------------------------------------------------------------------------------------------------
+ ### Lists & Tuples ###
+
+1. Tuple Structure
+	a. Tuples are an ordered sequence written as comma separated elements within parentheses ()
+ex: 	Ratings = (10, 9, 6, 5, 10, 8, 9, 6, 2)
+	
+	b. Multiple data types can be stored within a tuple (e.g. float, int, and str), however the data type will be "tuple"
+ex: 	tuple1 = ('disco', 10, 1.2)
+	type(tuple1) = tuple
+	
+	c. Each element of a tuple can be accessed via an index
+ex: 	(using tuple1 above)
+	tuple1[0]: 'disco'
+	tuple[1]: 10
+	tuple[2]: 1.2
+	tuple[-1]: 1.2
+	tuple[-2]: 10
+	tuple[-3]: 'disco'
+	
+	d. Tuples can be concatenated
+ex: 	tuple1 = ('disco', 10, 1.2)
+	tuple2 = tuple1 + ('hard rock', 10)
+	tuple2 = ('disco', 10, 1.2, 'hard rock', 10)
+	
+	e. Slicing works with tuples as well
+ex: 	tuple2[0:3] = ('disco', 10, 1.2)
+		     ^ note that the last index is 1 larger than the index you want
+	
+	f. The len() command can be used to find the length of a tuple
+ex: 	tuple1 = ('Ringo', 'Carl', 'Ellie', 'Biscuit')
+	num_dogs = len(tuple1)
+	num_dogs = 4
+	
+	g. Tuples are "immutable" ---> in order to "manipulate a tulple, we must create a new tuple instead
+ex: 	Ratings = (10, 9, 6, 5, 10, 8, 9, 6, 2)
+	RatingsSorted = sorted(Ratings)
+	RatingsSorted = (2, 5, 6, 6, 8, 9, 9, 10, 10)
+
+	h. Nesting - tuples may contain other tuples
+ex: 	NT = (1, 2, ('pop','rock'), (3, 4), ('disco', (1,2)))
+	NT[2]: ('pop', 'rock')
+	NT[2][1] = 'rock'
+	NT[2][1][0] = 'r'
+	
+
+2. Lists
+	a. Lists are ordered sequences represented with square brackets []
+ex: 	L = ["Mike", 10.1, 1982]
+	
+	b. Like tuples, lists can contain strings, floats, integers
+	c. Lists can be concatenated, indexed, sliced, nested (even with tuples), etc. identically to tuples
+	
+	d. One key difference from tuples is that lists ARE mutable
+ex: 	Contatenating a list in a way that tuples can't concatenate
+	L = ["Mike", 10.1, 1982]
+	L.extend(["pop", 10]) 
+	L = ["Mike, 10.1, 1982, "pop", 10]  ---> instead of creating a new list, the original list "L" was modified to have 5 elements instead of 3
+	
+	e. Differentiating between "extend" and "append"
+	L = ["Mike", 10.1, 1982]
+	L.append(["pop", 10]) 
+	L = ["Mike, 10.1, 1982, ["pop", 10]] ---> the "append" method only adds 1 element to the list
+
+	f. Mutability of lists
+ex: 	A = ["disco", 10, 1.2]
+	A[0] = "hard rock'
+	A = ["hard rock', 10, 1.2]	
+	
+	g. using the del() command
+	A = ["hard rock', 10, 1.2]
+	del(A[0])
+	A = [10, 1.2]
+	
+	h. Convert string to list using split() command
+ex1: 	"hard rock".split()
+	["hard", "rock"]
+	NOTE: the default is for the string to be separated with a space as the delimiter
+
+ex2: 	"A,B,C,D".split(",") ---> we can indicate the delimiter where we would like to split, in this case ","
+	["A","B","C","D"]
+
+	i. Aliasing vs. cloning
+	> Aliasing is creating a new variable that references the same list as the original
+ex: 	A = ["hard rock', 10, 1.2]
+	B=A ---> this is syntax for aliasing - a change to list A will result in a change in list B
+	
+	> Cloning allows you to make a separate copy of an original list
+ex: 	A = ["hard rock', 10, 1.2]
+	B=A[:] ---> this is syntax for cloning - a change to list A will not affect a change in list B
+
+---------------------------------------------------------------------------------------------------------
+### Dictionaries ###
+
+1. Structure of Dictionaries
+	a. A dictionary is made up of "keys" and "values", analogous to "index" and "elements" of a list
+	b. Dictionaries are denoted with curly brackets {}
+	c. Keys must be immutable and unique ---> keys can only be strings, numbers, or tuples
+	d. Each key is followed by a value, separated by a colon
+ex: 	{"key1":1, "key2":"2", "key3":[3,3,3], "key4":(4,4,4), ("key5"):5}
+		    ^ NOTE: values can be immutable, mutable, and duplicates (can be any data type)
+	e. Each key/value pair is separated by a comma
+
+2. How to use dictionaries
+	a. The key is used to "look up" the value
+ex: 	DICT["key"] outputs the value for that key (where DICT is dictionary name)
+
+	b. New entries can be added to the dictionary as follows
+ex: 	To add the key "Graduation" with the value "2007", the syntax is:
+	DICT["Graduation"] = "2007" (where DICT is dictionary name)
+
+	c. Entries can be deleted using the del() command
+ex: 	del(DICT["Thriller"]) (where DICT is dictionary name)
+	
+	d. The "in" command will let you know if a certail key is in a dictionary
+ex: 	"The Bodyguard" in DICT
+	If key is in dictionary, Python returns: True
+	If key is not in dictionary Pythin returns: False
+
+	e. To see all the keys in a dictionary:
+		DICT.keys() (where DICT is dictionary name)
+
+	f. To see all the values in a dicationary:
+		DICT.values() (where DICT is dictionary name)
+
+---------------------------------------------------------------------------------------------------------
+### Sets ###
+
+1. What is a set?
+	a. Sets are collections, like lists and tuples, but they are unordered ---> sets do not record element positon
+	b. Sets only have unique elements ---> no duplicates
+
+2. Set Structure
+	a. Sets use curly brackets {}
+	b. Elements of a set are separated by a comma
+ex: 	Set1 = {"pop", "rock", "soul"}
+	c. Duplicate items may be enetred into a set, but when they actual set is created (when code is run) the duplicates will not be present
+ex: 	Set = {"a", "a", "b", "b", "c"} 
+	print(Set) = {"a," "b", "c"}
+
+3. How to use sets
+	a. Convert a list to a set using the set() command (typecasting)
+ex: 	album_list = ["Michael Jackson", "Thriller", "Thriller", 1982]
+	album_set = set(album_list)
+	album_set: {"Michael Jackson", "Thriller", 1982}
+
+	b. Use .add() to add an element to a set
+ex: 	A = {"Thriller", "Back in Black", "AC/DC"}
+	A.add("NSYNC")
+	A: {"Thriller", "Back in Black", "AC/DC", "NSYNC"}
+
+	c. Use .remove() to remove an element from a set
+	A: {"Thriller", "Back in Black", "AC/DC", "NSYNC"}
+	A.remove("NSYNC")
+ex: 	A = {"Thriller", "Back in Black", "AC/DC"}
+
+	d. the "in" command can be used on sets similarly to dictionaries
+ex:	"AC/DC" in A returns:
+	True
+
+4. Logical Set Operation
+	a. Use "&" to find the intersection of two sets ---> any items not in BOTH sets disappear
+ex: 	album_set_1 = {"Californication", "By the Way", "Unlimited Love"}
+	album_set_2 = {"Californication", "By the Way", "The Getaway"}
+	album_set_3 = album_set_1 & album_set_2
+`	album_set_3: {"Californication", "By the Way"}
+	NOTE: intersection can also be found using the .intersection() method
+ex: 	album_set_1.intersection(album_set_2)
+
+
+	
+	b. use .union() to merge two sets together
+ex: 	album_set_3 = album_set_1.union(album_set_2)
+	album_set_3: {"Californication", "By the Way", "Unlimited Love", "The Getaway"}
+
+	c. Check is a given set is a subset (or superset) of another set
+ex1: 	album_set_4 = {"Californication"}
+	album_set_4.issubset(album_set_3) returns:
+	True
+
+ex2: 	album_set_3.issuperset(album_set_4) returns:
+	True
+
+	d. Check if an elemebt is in album_set_1 but not album_set_4
+ex: 	album_set_1.difference(album_set_4) returns:
+	{"By the Way", "Unlimited Love"}
+
+---------------------------------------------------------------------------------------------------------
+### Conditions and Branching ###
+
+1. Comparison operators
+	a. == determines if two values are equivalent
+ex: 	Set variable b=6
+	b==7 returns:
+	False
+
+	b. >,< represent greater than, less than
+	c. >= greater than or equal to
+	d. != determines if two values are *not* equal
+ex: 	b = 5
+	c = 6
+	b!=c returns:
+	True
+
+	d. Operators can be used on strings as well
+	"AC/DC" == "Michael Jackson" returns:
+	False
+	"AC/DC" != "Michael Jackson" returns:
+	True
+	NOTE: The equality operator is case-sensitive
+
+2. Branching (i.e. conditional statements)
+	a. if Statements example:
+	if age>=21:
+		print("you may buy alcohol") # This prints only if the conditional is true
+	print("leave") # This prints regardless of whether the if statement is true or false
+
+	b. Example adding an else statement:
+	if age>=21:
+		print("you may buy alcohol") # If this is true, the else statement will be skipped
+	else:
+		print("you can't buy alcohol") # only executed if the first condition is false
+	print("leave") 
+
+	c. elif Statement - concert example
+	if age > 18:
+		print("Go see Metallica")
+	elif age==18: # This is the "else if" statement in Python - use if you have more than 2 conditions to evaluate
+		print("Go see Queen")
+	else
+		print("Go see JoBros")
+	print("move on")
+	
+3. Logic Operators
+	a. Inputs and outputs are both boolean values
+	b. The not() operator
+ex: 	not(True) = False
+	not(False) = True
+	
+	c. The OR operator ---> only false if both inputs are false, otherwise true
+ex: 	album_year = 1990
+	if(album_year < 1980) or (album_year > 1989):
+		print("The album was made in the 70s or 90s")
+	else:
+		print("The album was made in the 80s")
+
+	d. The AND operator ---> only true if both inputs are true, otherwise false
+ex: 	album_year = 1983
+	if(album_year > 1979) and (album_year < 1990):
+		print("This album was made in the 80s")
+
+	e. % evaluates the remainder after division
+ex: 	a = 9
+	b = 10
+	a%3 = 0 ---> 9 / 3 has no remainder
+	b%3 = 1 ---> 10 / 3 has a remainder of 1
+
+---------------------------------------------------------------------------------------------------------
+### Loops ###
+
+1. The range functions
+	a. range(N)
+	b. If the input is a positive integer: outputs an ordered sequence as a list
+		b.1. The sequence contains the same number of elements as the input but starts at 0
+ex: 	range(3) outputs:
+	range(0,3)x
+
+	c, If the input is two numbers where first number < second number: 
+		c.1. The sequence starts with the first number and iterates up to but excluding the second number
+ex: 	range(10, 15) outputs:
+	[10,11,12,13,14]
+
+2. For loops
+	a. Iterating using indices
+ex: 	squares = ["red", "yellow", "green", "purple", "blue"] # change each element from its original color to "white"
+	for i in range(0,5): # the range tells Python how many time to repeat the code, here we use (0,5) because that matches the index of "squares"
+		squares[i]="white"
+
+	b. Iterating without indices
+ex: 	squares = ["red", "yellow" "green"]
+	for square in squares: # Note: "square" is a variable whose value is reassigned with each pass through the for loop
+		square
+
+	c. The enumerate() function
+		c.1 The following is the syntax to iterate through a list and provide the index of each element
+ex: 	squares = ["red", "yellow", "green"]
+	for i,square in enumerate(squares):
+		square
+		i
+
+3. While loops
+	a. While loops will only run if a condition is met
+ex: 	squares =["orange", "orange", "purple", "orange", "blue"] # write a script to execute while encoutering squares that are orange
+	Newsquares = [] # establishes an empty list to be populated when an orange square is encountered
+	i=0 # starts the index at 0
+	while(squares[i]=="orange"):
+		Newsquares.append(squares[i])
+		i=i+1
+
+---------------------------------------------------------------------------------------------------------
+### Functions ###
+
+1. Syntax for defining a function
+	a. Defining a function named "f1":
+	def f1(input):
+		""Add 1 in input""
+		output=input+1;
+	return(output)
+
+2. Python Built-in functions
+	a. len() calculate the length of a sequence or collection
+	b. sum() takes in the total of a tuple or list and returns the total sum
+	
+	c. Sorted vs. Sort functions
+ex:	sorted() returns a *new* sorted list or tuple ---> does not change original list
+	ratings = [9, 8, 3, 5, 2, 9, 4, 7]
+	sorted_ratings = sorted(ratings)
+	sorted_ratings: [2, 3, 4, 5, 7, 9, 9]
+
+	sort() changes the input by sorting the list ---> does not generate a new list
+	ratings = [9, 8, 3, 5, 2, 9, 4, 7]
+	ratings.sort()
+	ratings: [2, 3, 4, 5, 7, 9, 9]
+
+3. Making Functions
+	a. Structure
+	> Start with the keyword "def"
+	> Follow with the name of the function
+	> Add details of the function	
+	> Output the value of the function
+
+ex:	def add1(a):
+		b=a+1;
+		return b
+	
+	Calling the function:
+	add1(5)
+	6
+
+ex:	Making a more complex function
+	def add1(1):
+	"""
+	add 1 to a    ---> note: this is a documentation string (triple quotes) and can be pulled by calling help(add1)
+	"""
+	b=a+1;
+	return b
+
+	b. Multiple Parameters
+ex:	def Mult(a,b):
+	c=a*b
+	return c
+
+	Calling the funtion:
+	Mult(2,3)
+	6
+
+	Mult(2, "michael jordan")
+	michael jordan  michael jordan
+
+	c. Function without a return statement
+ex:	def MJ():
+		print('Michael Jordan')
+
+	MJ()
+	'Michael Jordan'
+
+	d. Function with more than one task:
+ex:	def add1(a):
+		b=a+1;
+		prin(a, "plut 1 equals", b)
+		return b
+
+	Calling the function:
+	add1(2)
+	2 plus 1 equals 3
+	3
+	
+	e. Loops in functions
+ex:	def printStuff(Stuff):
+		for i,s in enumerate(Stuff):
+			print("Album", i, "Rating is", s)
+
+	album_ratings = [10,8.5,9.5]
+	printStuff(album_ratings)
+	Album 0 Rating is 10
+	Album 1 Rating is 8.5
+	Album 2 Rating is 9.5
+
+	f. Functions that can handle a variable number of elements
+ex:	def ArtistNames(*names):  ### ---> note: the asterisk allows the input to be of any length
+		for name in names:
+			print(name)
+
+	ArtistNames("Michael Jackson", "ACDC", "Pink Floyd")
+	Michael Jackson
+	ACDC
+	Pink Floyd
+
+	g. Scope - Local variables
+	> Global scope
+ex:	def Thriller():
+		Date = 1982   ---> Date is only defined within the function, therefore is a local variable, not a global variable
+		return Date
+
+	Thriller()
+	Date ---> does not exist within the global scope
+
+	print(Thriller())
+	1982
+
+	Date= 2017 ---> this is a global variable
+	Note: local and global variables may have the same name with no conflict
+
+	h. Designating a variable as global within a function
+ex:	def PinkFloyd():
+		global ClaimedSales # ---> the function "global" makes "ClaimedSales" a global variable
+		ClaimedSales = "45 million"
+		return ClaimedSales
+
+	PinkFloyd()
+	print(ClaimedSales)
+	45 million
+
+---------------------------------------------------------------------------------------------------------
+### Exception Handling ###
+
+1. What is exception handling?
+	a. For example, when a system expects text but receives a number, an exception handler can be included in code to present an error message
+	b. An exception is any error that occurs during the execution of code
+
+2. try...except...else...finally statement
+ex:	try:
+		getfile = open("myfile","r")
+		getfile.write("My file for exception handling."
+	except IOError:
+		print("Unable to open or read the data in the file.")
+	else:
+		print("The file was written successfully")
+	finally:
+		getfile.close()
+		print("File is now closed.")
+
+3. List of exceptions in python: https://docs.python.org/3/library/exceptions.html
+	
+
+---------------------------------------------------------------------------------------------------------	
+### Objects and Classes ###
+
+1. Objects
+	a. Every object has the following:
+	> a type
+	> internal data representation (a blueprint)
+	> a set of procedures for interacting with the object (methods)
+	b. An object is an instance of a particular type
+
+2. Methods
+	a. A class or type's methods are functions that every instance of that class or type provides
+	b. Methods are how you interact with an object
+	c. Sorting is an example of a method that interacts with the data in the object
+
+ex:	Ratings=[10,9,6,5,10,8,9,6,2]
+	Ratings.sort()
+	^ Ratings is the object and sort() is the method
+
+3. How to construct your own classes
+	a. A class has:
+	> data attributes (e.g. self.attribute)
+	> methods
+
+ex:	Creatng a class: Circle
+	
+	class Circle(object):     ---> defines the class
+			---> __init__ is a special method (called a constructor) used to initialise the data attributes
+		def __init__(self, radius, color):    ---> define data attributes used to initialize each instance of the class
+			self.radius = radius;
+			self.color = color;
+	
+ex:	Creating an object of class: Circle
+	
+	C1 = Circle(10, "red") ---> this will create a red circle with radius 10
+	
+ex: 	Pulling the attributes of the object C1
+	
+	C1.radius
+	10
+	
+	C2.color
+	red
+
+ex: Changing an attribute of an object directly
+	
+	C1.color="blue" ---> changes the color from red to blue
+
+4. Methods
+	a. Methods are functions that change or interact with the data attributes
+
+ex:	Say we would like to be able to change the radius of our object of class: Circle. We add to the code for the class:
+
+	class Circle(object):     
+		def __init__(self, radius, color):    
+			self.radius = radius;
+			self.color = color;
+		def add_radius(self,r):
+			self.radius=self.radius + r
+
+ex:	Using the new method add_radius()
+	C1 = Circle(2,"red")
+	C1.add_radius(8)
+
+ex: 	Adding a defailt value for parameters:
+	
+	class Circle(object):     
+		def __init__(self, radius=3, color="red"):    ---> Default radius set to 3, default color set to red
+			self.radius = radius;
+			self.color = color;
+		def add_radius(self,r):
+			self.radius=self.radius + r
+5. the dir() function
+	a. Can be used to obtain a list of data attributes and methods associated with a class
+
+ex:	dir(Nameofobject) returns a list of data attributes and methods associated with "Nameofobject"
+	> methods surrounded by __ __ are Python default methods
+
+---------------------------------------------------------------------------------------------------------
+### Reading Files ###
+
+1. Opening a file using the open() function
+ex:	File1 = open("/resources/data/Example2.txt","w")	
+	> The first argument is the filepath
+	> The second argument is the mode (r = reading (default), w = writing, a = appending)
+
+ex:	Use the File1 object to obtain information about the file
+	File1.name returns the directory + file name
+	File.mode returns the mode of the file
+
+	a. ALWAYS close the file using the method close()
+ex:	File1.close()
+
+2. Opening a file using a with statement 
+	a. Why? The with statement automatically closes the file
+
+ex:	with open("Example1.txt", "r") as File1:
+		file_stuff=File1.read()     ---> The code will run everything in the indented block, then close the file
+		print(file_stuff)
+	print(File1.closed)
+	print(file_stuff)
+
+3. Output every element of a file in a list using readlines()
+ex:	with open("Example.txt". "r") as File1:
+		file_stuff = File1.readlines()
+		print(file_stuff) 
+
+	filestuff: ["This is line 1\n" "This is line 2\n", "This is line 3"]
+	file_stuff[0]: "This is line 1\n"
+
+4. Use the method readline() to read individual lines
+ex:	with open("Example1.txt","r") as File1:
+		file_stuff = File1.readline()
+		print(file_stuff)
+
+	^ This will only read the first line of the file and store it to file_stuff. 
+		> If .readline() is called again, it will read the second line and append it to file_stuff
+
+5. We can print out a defined number of characters with readlines()
+ex:	with open("Example1.txt", "r") as File1:
+		file_stuff=File1.readlines(16) ---> This reads the first 16 characters of the file
+		print(file_stuff)  ---> This prints the first 16 characters
+		file_stuff=File1.readlines(5) ---> This reads the next 5 characters (after the first 16)
+		print(file_stuff)  ---> This prints the next 5 characters
+		file_stuff=File1.readlines(9)
+		print(file_stuff)
+
+---------------------------------------------------------------------------------------------------------
+### Writing Files###
+
+1. Writing to a file using a with statement
+
+	a. Writing to a filename that already exists will overwrite the file
+	
+ex:	with open("Example2.txt", "w") as File1:
+		File1.write("This is line A\n") ---> .write() works similarly to .readline() as it writes one line at a time
+		File1.write("This is line B\n")
+
+2. Write each element in a list to a file
+ex:	Lines = ["This is line A\n", "This is line B\n", "This is line C\n"]
+	with open("/resources/data/Example2.txt", "w") as File1:
+		for line in Lines:
+			File1.write(line)
+
+3. Appending a file using a with statement
+	
+	a. Appending a filename that already exists will NOT overwrite the file
+
+ex:	with open("/resources/data/Example2.txt", "a") as File1:
+		File1.write("This is line C\n") ---> this adds line C to the existing file
+
+4. Copying one file to a new file
+
+ex:	with open("Example1.txt","r") as readfile
+		with open("Example2.txt","w") as writefile
+			for line in readfile
+				writefile.write(line)
+
+5. Useful functons when writing to a file:
+
+.tell() - returns the current position in bytes
+.seek(offset,from) - changes the position by 'offset' bytes with respect to 'from'. From can take the value of 0 (corresponding to beginning), 1, (relative to current position), and 2 (end)
+
+
+
+---------------------------------------------------------------------------------------------------------
+### Working with Data in Pandas ### 
+
+1. Pandas Definition
+	a. A library ("dependency") used for data analysis
+
+2. Working with Pandas
+	a. Loading the library: 
+		import pandas
+	a1: Loading the library with succinct naming: 
+		import pandas as pd
+	
+	b. opening a .csv with pandas
+ex:	import pandas as pd
+	csv_path = "file1.csv"
+	df = pd.read_csv(csv_path)
+
+	c. openind an excel file
+	import pandas as pd
+ex:	xlsx_path = "file1.xlsx"
+	df = pd.read_excel(xlsx_path)
+	df.head()
+
+3. Dataframes
+ex	csv_path = "file1.csv"   ---> stores the path of the csv
+	df = pd.read_csv(csv_path)   ---> path of csv is used as an argument in the pd.read_csv() function
+	df.head() ---> shows the first 5 rows of a data frame
+
+	a. A datframe is comprised of rows and columns
+	
+	b. Creating a dataframe from a dictionary
+ex:	songs = {"Album" : ["Thriller", "Back in Black", "The Dark Side of the Moon"],
+		"Released" : [1982,1980,1973], "Length" : ["00:42:19", "00:42:11", "00:42:49"]}
+	
+	songs_frame = pd.DataFrame(songs)
+	> The dictionary keys become the table headers
+	> The dictionary values popualate the rows
+
+	c. To create a new data from of just one column (ex: "Length" in the dataframe above)
+	> Note: "df" is not a function, it is what we named our dataframe
+ex:	x = df[["Length"]]
+ex:	y = df[["Artist", "Length", "Genre"]]  ---> Creates a dataframe with 3 columns
+
+4. loc() and iloc()
+
+	a. loc() is a label-based data selecting method which means that we have to pass the name of the row or column that we want to select. This method includes the last element of the range passed in it.
+	> syntax: dataframe_name.loc[row_label, column_label]
+
+	b. iloc() is an indexed-based selecting method which means that we have to pass an integer index in the method to select a specific row/column. This method does not include the last element of the range passed in it.
+	> syntax: dataframe_name.iloc[row_index,column_index]
+
+5. Setting a specific column as the index for the data tabe
+ex:	The default index format is integers starting with 0. Say we have a dataframe "df" with column "Name" we would like to use as the index:
+	df = df.set_index("Name")
+
+	a. You can also set a list as an index with two different methods. Given data frame df:
+ex1:	list = ['a','b','c']
+	df_new = df
+	df_new.index = list
+
+ex2:	df_new.set_index(pd.Series(list))
+	
+
+6. Example: find how many unique elements are in a column of a dataframe
+
+ex:	songs = {"Album" : ["Thriller", "Back in Black", "The Dark Side of the Moon"],
+		"Released" : [1982,1980,1973], "Length" : ["00:42:19", "00:42:11", "00:42:49"]}
+	
+	songs_frame = pd.DataFrame(songs)
+	unique_albums = songs_frames["Album"].unique()
+		      = dataframe_name["column_name"].unique()
+	> This returns a column with only the unique elements
+
+7. Example: returning rows based on the value within a column
+ex:	Returning rows for albums which came out in the 1980s
+
+	songs_frame["Released"]>=1980
+	> returns a series of boolean values (True/False) based on the conditional
+
+	Syntax to select the columns where the condition is true:
+	
+	eighties = songs_frame[songs_frame["Released"]>=1980]
+	> This returns a new dataframe named "eightes" which has only albums released after 1980
+
+8. Save the new dataframe to a csv
+ex:	eighties.to_csv("eighties_albums.csv") ---> the argument is he name of the csv file
+
+9. Slicing with DataFrames
+	a. When slicing with iloc(), the stop index should go one step beyond the row you want to select. The start bound will be included in the output:
+
+ex:	Select rows 0,1, and 2 in dataframe "df"
+	df.iloc[0:3]
+
+	b. When slicing with loc(), both the stop bound and start bound are inclusive
+
+9. Add columns to a data frame
+ex:	Given a dataframe "df" with no column headers:
+	df.columns = ['Column_1_header','Column_2_header', . . .]
+---------------------------------------------------------------------------------------------------------
+### One Dimensional Numpy ###
+
+1. What is Numpy?
+	a. Numpy is a library for scientific computing
+
+2. Array creation
+	a. Numpy arrays are similar to lists HOWEVER each element is of the same type
+	b. Cast a list to a numpy array
+
+ex.	import numpy as np
+	a = np.array([0,1,2,3,4])
+	> Data can be accessed via an index just like a list
+
+	c. Determing the type of an array or the elements of an array
+ex:	type(a): numpy.ndarray   ---> this is the type for the array
+	b = np.array([3.1,11.02,6.2])
+	type(b): numpy.ndarray
+
+ex:	a.dtype: dtype('int64') ---> this is the type for the elements of the array
+	b.dtype: dtype('float64')
+
+
+	d. Basic array attributes
+ex:	a.size: 5  ---> the number of elements in the array
+	a.ndim: 1 ---> the number of array dimensions or the "rank" of the array
+	a.shape: (5,)  ---> a tuple of integers indicating the size of the array in each dimension
+
+3. Indexing and slicing
+	a. Indexing
+ex:	c = np.array([20,1,2,3,4])
+	c: array([20,1,2,3,4])
+
+	c[0] = 100 ----> changint he first element to 100
+	c: array([100,1,2,3,4])
+
+	b. SLicing
+ex:	c: array([100,1,2,3,0])
+	d = c[1:4]
+	d: array([1,2,3])
+
+	c[3:5] = 300,400   ---> assigns new values to the third and fourth elements
+	c: array([100,1,2,300,400])
+
+	c. Slicing and defining steps ---> syntax: [start:end:step]
+ex:	arr = np.array([1,2,3,4,5,6,7])
+	print(arr[1:5:2])
+	[2 4]
+
+ex:	If we don't pass a start is is considered 0:
+	print(arr[:4])
+	[1 2 3 4]
+
+ex: 	If we don't pass end it considers til the length of the array:
+	print(arr[4:])
+	[5 6 7]
+	
+
+
+4. Basic Operations
+	a. Vector addition and subtraction with regular python
+ex:	u = [1,0]
+	v = [0,1]
+	z = []
+
+	for n,m in zip(u,v):
+		z.append(n+m)
+
+	b. Vector addition and subraction with numpy
+	u = np.array([1,0])
+	v = np.array([0,1])
+	z = u + v
+	z: array([1,1])
+
+	c. Array multiplication with a scalar
+ex:	y = np.array([1,2])
+	z = 2*y
+	z: array([2,4])
+
+	d. Hadamard product of two numpy arrays
+ex:	u = np.array([1,2])
+	v = np.array([3,2])
+	z = u*v
+	z: array([3,4])
+
+	e. Dot product of two numpy arrays
+ex:	u = np.array([1,2])
+	v = np.array([3,1])
+	result = np.dot(u,v)
+	result: 5
+
+	f. Adding a constant to a numpy array
+ex:	u = np.array([1,2,3,-1])
+	z = u + 1
+	z: array([2,3,4,0])
+
+5. Universal Functions
+	a. Mean
+ex:	a = np.array([1,-3,3,4,5])
+	mean_a = a.mean()
+	mean_a: 2.0
+
+	b. Max
+	max_a = a.max()
+	max_a: 5.0
+
+	c. Misc trigonometric functions
+ex:	np.pi
+	x = np.array([0,np.pi/2, np.pi])
+	y = np.sin(x)
+	y: array([0,1,1.2e-16])
+
+	d. Using .linspace()
+ex:	np.linspace(-2,2,num=5)
+		     ^ syntax: .linspace(starting_point, end_point, num=number_of_elements_to_generate)
+
+	e. Plotting Mathematical Functions
+ex:	x = np.linspace(0, 2*np.pi, 100)
+	y = np.sin(x)
+	import matplotlib.pyplot as plt
+	%matplotlib inline ---> syntax for displaying he plot in Jupyter notebooks
+	plt.plot(x,y)
+
+---------------------------------------------------------------------------------------------------------
+### Two Dimensional Numpy ###
+
+1. Creating 2D lists
+ex:	a = [[11,12,13],[21,22,23],[31,32,33]]  ---> each nested list corresponds to a different row of the matrix
+	A = np.array(a)
+	A.ndim: 2
+	A.shape: (3,3) ---> (# of rows, # of columns)
+	A.size: 9
+
+2. Accessing different elements in an array:
+ex:	[A[0][0]	A[0][1]		A[0][2]
+	 A[1][0]	A[1][1]		A[1][2]
+	 A[2][0]	A[2][1]		A[2][2]]
+
+	> First index corresponds to the row index
+	> Second index corresponds to the column index
+	> Alternare syntax: A[0,1] is the same as A[0][1]
+
+3. Slicing
+ex:	A[0,0:2]
+	> This will access the first two columns in the first row
+
+ex:	A[0:2,2]
+	> This will access the first two rows in the third column
+
+4. Basic Operations
+	a. Adding two arrays
+ex:	X = np.array([[1,0],[0,1]])
+	Y = np.array([[2,1],[1,2]])
+	Z = X + Y
+	Z: array([[3,1],[1,3]])
+
+	b. Multiplication of 2 arrays
+ex:	Hadamard product
+	X = np.array([[1,2],[2,1]])
+	Y = np.array([[2,3],[3,2]])
+	Z = X*Y
+	Z: array([[2,6],[6,2]])
+
+ex:	Matrix Multiplication
+	A = np.array([[0,1,1],[1,0,1]])
+	B = np.array([[1,1],[1,1],[-1,1]])
+	C = np.dot(A,B)
+	C: array([[0,2],[0,2]])
+	> NOTE: The number of rows of A (# of lists in A) must equal the number of columns in B (# of elements in each list in B)
+
+
+---------------------------------------------------------------------------------------------------------
+### Simple APIs ###
+
+1. What is an API?
+	a. APIs allow to different software programs to communicate
+	> Pandas is an example of an API that communicates between Python programs and other software to return outputs
+
+2. REST APIs
+	a. Defn: REpreentational State Transfer APIs
+	b. REST APIs are used to interact with web servies, i.e. applications you call through the internet
+	c. In rest APIs, the program is called the "client", and the web service is called the "resource"
+	d. REST APIs have a set of rules regarding:
+	> Communication
+	> Input or request
+	> Output or response
+
+3. PyCoinGecko
+	a. PyCoinGecko is the the Python client (or "wrapper") used for the CoinGecko API
+	> See lab for more examples
+	
+4. API Keys and Endpoints
+	a. An API key is the way to access the API
+	b. AN endpoint is the location of teh service
+
+	c. Watson speech to text
+
+ex: 	from ibm_watson import SpeechToTextV1
+	url_s2t = "http:// . . ."
+	iam_apikey_s2t = "EOeiZnns . . ."
+	s2t = SpeechTpTextV1(iam_apikey=iam_apikey_s2t, url=url_s2t
+
+	filename = 'hello_this_is_python.wav'
+	with open(filename, mode = "rb") as wav:
+		response = s2t.recognize(audio=wav, content_type='audio/wav')
+
+	response.result
+	recognized_text = response.result['results'][0]["alternatives"][0]["transcript"]
+
+	recognized_text: "hello this is python"
+
+	d. Watson language translator
+ex:	See hands-on lab
+
+---------------------------------------------------------------------------------------------------------
+### HTTP Protocol using Requests Library ###
+
+1. Overview of HTTP
+	a. Scheme - for this lab it will always be http://
+	b. Base URL - e.g. www.ibm.com
+	c. Route: location on the web server, e.g. /images/IDSNlogo.png
+
+2. Response status codes
+	a. 1XX - informational
+	b. 2XX - success (e.g. 200 - OK)
+	c. 3XX - redirection
+	d. 4XX - client error (e.g. 404 - Not Found)
+
+3. HTTP Methods
+	a. GET - retrieves data from the served
+	b. POST - submits data to server
+	c. Updates data already on server
+	d. Deletes data from server
+
+4. Requests
+	a. Requests is a Pythin library that allows you to send HTTP requests 
+ex:	import requests
+	url = 'http://www.ibm.com/'
+	r = requests.get(url)
+	r.status_code:200 ---> 200 indicates "OK"
+	r.request.headers ---> returns REQUEST headers as a dictionary
+	r.request.body:None ---> None indicates that the get request has no body
+	r.headers ---> returns the RESPONSE headers as a dictionary
+
+5. GET requests
+ex:	httbin.org/get
+	> After the get request we have a query string:
+	http://httbin.org/get?Name=Joseph&ID=123
+	> "?" is the start of the query string
+	> "Name" is a parmeter name with value "Joseph"
+	> "ID" is a parameter name with value "123"
+
+	a. Example in Python
+ex:	url_get = 'http://httpbin.org/get'
+	payload = {"name":"Joseph","ID":"123"}
+	r = requests.get(url_get,params=payload)
+	r.url: "http://httbin.org/get?Name=Joseph&ID=123"
+
+	6. POST requests
+ex:	url_post = 'http://httpbin.org/post'
+	payload = {"name":"Joseph","ID":"123"}
+	r = requests.post(url_get,data=payload)
+
+---------------------------------------------------------------------------------------------------------
+### Webscraping ###
+
+See labs for details
+
+
+---------------------------------------------------------------------------------------------------------
+### Running list of common functions and methods ###
+print(): tells Python to print something
+type(): tells you what data type and expression is
+float(): converts an expression to a float
+int(): converts an expression to an integer
+str(): converts an expression to a string
+len(): returns the length of a string
+\n: splits a string into a new line
+\t inserts a tab within a string
+.upper() returns an all upper-case version of a string (the string precedes the period)
+sorted(): sorts a tuple in ascending order
+.index(): returns the index number of the argument within a list or tuple (the list/tuple precedes the period)
+.extend([]): add multiple elements to a list
+.append([]): add only one element to a list
+.keys(): returns all the keys of a dictionary
+.values(): returns all the values of a dictionary
+.add(): add an element to a set
+.remove(): remove an element from a set
+
+	 
